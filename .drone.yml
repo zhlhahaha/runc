@@ -11,4 +11,6 @@ steps:
   commands:
   - go env
   - go get github.com/opencontainers/runc
-  - ls /go
+  - cd /go/src/github.com/opencontainers/runc
+  - ls
+  - make
