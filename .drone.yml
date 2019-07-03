@@ -9,8 +9,5 @@ steps:
 - name: runc-build-arm64
   image: golang:1.11
   commands:
-  - go env
-  - go get github.com/opencontainers/runc
-  - cd /go/src/github.com/opencontainers/runc
-  - ls
-  - make
+  - apt-cache search vim
+  - apt-cache search libseccomp
