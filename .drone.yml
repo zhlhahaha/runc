@@ -12,3 +12,4 @@ steps:
   - go get -u golang.org/x/lint/golint
   - go get -u github.com/vbatts/git-validation
   - go env
+  - ls
