@@ -9,5 +9,9 @@ steps:
 - name: runc-build-arm64
   image: golang:1.11
   commands:
-  - apt-cache search vim
-  - apt-cache search libseccomp
+  - go env
+  - go get github.com/opencontainers/runc
+  - cd /go/src/github.com/opencontainers/runc
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libseccomp-dev
+  - make
