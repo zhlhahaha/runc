@@ -16,4 +16,4 @@ steps:
   - apt-get install -y libseccomp-dev
   - make
   - ./runc --version
-  - make install
+  - make validate
