@@ -12,6 +12,6 @@ steps:
   - go env
   - go get github.com/opencontainers/runc
   - cd /go/src/github.com/opencontainers/runc
-  - sudo apt-get -qq update
-  - sudo apt-get install -y libseccomp-dev
+  - apt-get update
+  - apt-get install -y libseccomp-dev
   - make
