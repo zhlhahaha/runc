@@ -1,0 +1,12 @@
+kind: pipeline
+name: runc-build-arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+- name: runc-build-arm64
+  image: golang:1.12
+  commands:
+  - make 
