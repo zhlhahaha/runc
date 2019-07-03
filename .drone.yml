@@ -9,7 +9,8 @@ steps:
 - name: runc-build-arm64
   image: golang:1.11
   commands:
+  - ls
+  - apt-get install -y libseccomp-dev
   - go get -u golang.org/x/lint/golint
   - go get -u github.com/vbatts/git-validation
   - go env
-  - ls
