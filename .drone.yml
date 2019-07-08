@@ -13,7 +13,7 @@ steps:
   - go get github.com/opencontainers/runc
   - cd /go/src/github.com/opencontainers/runc
   - apt-get update
-  - apt-get install -y libseccomp-dev
+  - apt-get install -y libseccomp-dev bats jq pkg-config gawk
   - make
   - ./runc --version
   - make validate
