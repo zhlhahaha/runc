@@ -17,4 +17,4 @@ steps:
   - make
   - ./runc --version
   - make validate
-  - make test
+  - make localintegration
