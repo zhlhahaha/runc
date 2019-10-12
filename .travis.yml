@@ -8,10 +8,21 @@ go:
 matrix:
   include:
     - go: 1.12.x
+      arch: amd64
       env:
         - RUNC_USE_SYSTEMD=1
       script:
         - make BUILDTAGS="${BUILDTAGS}" all
+        - sudo PATH="$PATH" make localintegration RUNC_USE_SYSTEMD=1
+    - go: 1.12.9
+      arch: arm64
+      env:
+        - RUNC_USE_SYSTEMD=1
+      script:
+        - make BUILDTAGS="${BUILDTAGS}" all
+        - ./contrib/cmd/recvtty/recvtty --pid-file /tmp/test.pid --mode null /tmp/test.sock &
+        - file /tmp/test.sock
+        - uname -a
         - sudo PATH="$PATH" make localintegration RUNC_USE_SYSTEMD=1
   allow_failures:
     - go: tip
@@ -29,7 +40,8 @@ env:
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y libseccomp-dev
+  - sudo dpkg -l|awk '{print $2}'
+  - sudo apt-get install -y libseccomp-dev pkg-config bats gawk jq
   - go get -u golang.org/x/lint/golint
   - go get -u github.com/vbatts/git-validation
   - env | grep TRAVIS_
